@@ -13,8 +13,8 @@ spec:
       labels:
         version: v2
     - name: v3
-        labels:
-          version: v3
+      labels:
+        version: v3
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
