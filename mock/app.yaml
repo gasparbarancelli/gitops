@@ -1,3 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mock-pv-claim
+  namespace: mock
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,6 +32,10 @@ spec:
       annotations:
         sidecar.istio.io/inject: "true"
     spec:
+      volumes:
+        - name: mock-storage
+          persistentVolumeClaim:
+            claimName: mock-pv-claim
       containers:
         - name: mock
           image: rodolpheche/wiremock:latest
@@ -33,6 +50,9 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+          volumeMounts:
+            - name: mock-storage
+              mountPath: /home/wiremock
 
 ---
 
