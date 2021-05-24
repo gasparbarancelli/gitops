@@ -44,7 +44,6 @@ metadata:
   labels:
     app: mock
     service: mock
-    java-monitoring: prometheus
 spec:
   ports:
     - name: tcp-8080
