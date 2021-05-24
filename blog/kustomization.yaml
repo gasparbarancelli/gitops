@@ -6,6 +6,7 @@ resources:
 - namespace.yaml
 - app_v1.yaml
 - app_v2.yaml
+- app_v3.yaml
 - autoscaling.yaml
 - gateway.yaml
 - service_monitor.yaml
