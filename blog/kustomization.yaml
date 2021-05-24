@@ -11,4 +11,4 @@ resources:
 - gateway.yaml
 - service_monitor.yaml
 - traffic_splitting.yaml
-namespace: teste
+namespace: community
