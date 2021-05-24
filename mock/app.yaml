@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mock
+  namespace: mock
+  labels:
+    app: mock
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: mock
+  template:
+    metadata:
+      labels:
+        app: mock
+        component: mock
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: mock
+          image: rodolpheche/wiremock:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "400m"
+            limits:
+              memory: "700Mi"
+              cpu: "600m"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mock
+  namespace: mock
+  labels:
+    app: mock
+    service: mock
+    java-monitoring: prometheus
+spec:
+  ports:
+    - name: tcp-8080
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: mock

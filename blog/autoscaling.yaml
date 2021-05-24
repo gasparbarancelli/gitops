@@ -9,7 +9,7 @@ spec:
     kind: Deployment
     name: blog-v1
   minReplicas: 1
-  maxReplicas: 10
+  maxReplicas: 5
   metrics:
     - type: Resource
       resource:
@@ -22,4 +22,4 @@ spec:
         name: memory
         target:
           type: AverageValue
-          averageValue: 650m
+          averageValue: 650Mi
