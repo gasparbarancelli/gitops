@@ -1,7 +1,7 @@
 Utilizando microk8s habilite as seguintes funcionalidades
 
 ```ssh
-microk8s enable dns ha-cluster istio metrics-server registry storage
+microk8s enable dns ha-cluster istio metrics-server registry storage prometheus
 ```
 
 Comandos para obter a porta e ip do gateway do istio
