@@ -1,3 +1,9 @@
+utilize kustomize para gera manifesto
+
+```ssh
+kustomize edit set namespace teste && kustomize build .
+```
+
 Utilizando microk8s habilite as seguintes funcionalidades
 
 ```ssh

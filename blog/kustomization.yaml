@@ -3,10 +3,11 @@ kind: Kustomization
 commonLabels:
   app: blog
 resources:
-  - namespace.yaml
-  - app_v1.yaml
-  - app_v2.yaml
-  - autoscaling.yaml
-  - gateway.yaml
-  - service_monitor.yaml
-  - traffic_splitting.yaml
+- namespace.yaml
+- app_v1.yaml
+- app_v2.yaml
+- autoscaling.yaml
+- gateway.yaml
+- service_monitor.yaml
+- traffic_splitting.yaml
+namespace: teste
