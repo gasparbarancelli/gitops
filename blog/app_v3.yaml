@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: blog
-          image: gasparbarancelli/blog:0.0.2-SNAPSHOT
+          image: gasparbarancelli/blog:0.0.3-SNAPSHOT
           imagePullPolicy: Always
           readinessProbe:
             httpGet:
