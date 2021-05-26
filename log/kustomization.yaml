@@ -7,5 +7,5 @@ resources:
 - elasticsearch.yaml
 - kibana.yaml
 - fluentd-config.yaml
-- fluentd-deployment.yaml
+- fluentd.yaml
 namespace: elastic-system
