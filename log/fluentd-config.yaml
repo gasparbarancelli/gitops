@@ -52,7 +52,6 @@ data:
         retry_forever true
       </buffer>
     </match>
-
   container.input.conf: |-
     <source>
       @id fluentd-containers.log
