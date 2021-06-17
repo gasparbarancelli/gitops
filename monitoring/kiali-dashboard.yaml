@@ -1,0 +1,16 @@
+apiVersion: monitoring.kiali.io/v1alpha1
+kind: MonitoringDashboard
+metadata:
+  name: myappdashboard
+spec:
+  title: My App Dashboard
+  items:
+    - chart:
+        name: My App Processing Duration
+        unit: seconds
+        spans: 6
+        metricName: my_app_duration_seconds
+        dataType: histogram
+        aggregations:
+          - label: id
+            displayName: ID
