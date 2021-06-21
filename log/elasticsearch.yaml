@@ -1,7 +1,7 @@
 apiVersion: elasticsearch.k8s.elastic.co/v1
 kind: Elasticsearch
 metadata:
-  name: quickstart
+  name: elasticsearch
   namespace: elastic-system
 spec:
   version: 7.13.0
@@ -13,6 +13,25 @@ spec:
         node.data: true
         node.ingest: true
         node.store.allow_mmap: false
+      podTemplate:
+        metadata:
+          labels:
+            app: elasticsearch
+        spec:
+          initContainers:
+            - name: sysctl
+              securityContext:
+                privileged: true
+              command: [ 'sh', '-c', 'sysctl -w vm.max_map_count=262144' ]
+          containers:
+            - name: elasticsearch
+              resources:
+                requests:
+                  memory: 4Gi
+                  cpu: 1
+                limits:
+                  memory: 4Gi
+                  cpu: 1
       volumeClaimTemplates:
         - metadata:
             name: elasticsearch-data
@@ -21,4 +40,4 @@ spec:
               - ReadWriteOnce
             resources:
               requests:
-                storage: 2Gi
+                storage: 10Gi

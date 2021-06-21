@@ -1,11 +1,31 @@
 apiVersion: kibana.k8s.elastic.co/v1
 kind: Kibana
 metadata:
-  name: quickstart
+  name: elasticsearch
   namespace: elastic-system
 spec:
   version: 7.13.0
   count: 1
   elasticsearchRef:
-    name: quickstart
+    name: elasticsearch
     namespace: elastic-system
+  http:
+    service:
+      spec:
+        type: LoadBalancer
+        ports:
+          - name: https
+            protocol: TCP
+            port: 443
+            targetPort: 5601
+  podTemplate:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+        - name: kibana
+          resources:
+            limits:
+              memory: 2Gi
+              cpu: 1
