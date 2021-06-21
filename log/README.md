@@ -1,6 +1,8 @@
 Esse guia tem como objetivo documentar a instalação do EFK que é o acrônimo de ElasticSearch, FluentD e Kibana, num cluster Kubernetes.
 
-Vamos fazer o uso de operadores para instalação do Elastic Search e Kibana, com isso teremos CR "Custom Resources" para subir novos tipos de artefatos no Kubernetes, bem como ler os CRD "Custom Resources Definition" que seriam suas especificações/documentações. O operador utilizado é disponibilizado pela equipe do ElasticSearch, portanto, ele é encarregado por implantar os artefatos da melhor forma possivel, até mesmo fazer um upgrade de versão.  
+Vamos fazer o uso de operadores para instalação do Elastic Search e Kibana, com isso teremos CR "Custom Resources" para subir novos tipos de artefatos no Kubernetes, bem como ler os CRD "Custom Resources Definition" que seriam suas especificações/documentações. Utilizamos o operador desenvolvido pela equipe do ElasticSearch, portanto, ele é encarregado por implantar os artefatos da melhor forma possivel, até mesmo fazer um upgrade de versão.  
+
+> No momento em que escrevemos esta documentação não existe um operador para o FluentD, portanto implantaremos o FluentD num DaemonSet, pois ele precisa ser implantado em todos nós do cluster.
 
 Para facilitar a instalação de toda stack EFK disponibilizamos um script executavel nomeado como ```install.sh```, sendo assim execute os simples comandos abaixo para instalar toda stack em seu cluster.
 
