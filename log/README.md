@@ -12,7 +12,7 @@ Primeiramente vamos trazer uma breve explicação sobre cada uma das peças menc
 
 **Kibana** é um plugin de visualização de dados de fonte aberta para o Elasticsearch. Ele fornece recursos de visualização em cima do conteúdo indexado em um cluster Elasticsearch. Os usuários podem criar gráficos de barra, linha e dispersão, ou gráficos e mapas de torta em cima de grandes volumes de dados.
 
-Utilizaremos o Fluentd como agente responsavel por coletar, filtrar, formatar e enviar os logs de todos os nós do nosso cluster Kubernetes para um cluster do Elasticsearch. Portanto, devemos implantar o Fluentd como DaemonSet, garantindo assim, com que o Pod do Fluentd rode em todos os nós do cluster. Já o cluster do Elasticsearch armazenará os dados recebidos num determinado volume, nos dando a possibilidade de realizar backups e restores dos seus dados. Por fim, vamos criar uma conexão entre o Kibana e o cluster Elasticsearch, para que sejamos capazes de visualizar os logs das aplicações de uma forma mais simplificada e organizada.
+Utilizaremos o Fluentd como agente responsável por coletar, filtrar, formatar e enviar os logs de todos os nós do nosso cluster Kubernetes para um cluster do Elasticsearch. Portanto, devemos implantar o Fluentd como DaemonSet, garantindo assim, com que o Pod do Fluentd rode em todos os nós do cluster. Já o cluster do Elasticsearch armazenará os dados recebidos num determinado volume, nos dando a possibilidade de realizar backups e restores dos seus dados. Por fim, vamos criar uma conexão entre o Kibana e o cluster Elasticsearch, para que sejamos capazes de visualizar os logs das aplicações de uma forma mais simplificada e organizada.
 
 A figura abaixo ilustra a conexão entre as peças citadas acima.
 
