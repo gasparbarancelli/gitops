@@ -33,19 +33,21 @@ chmod +x install.sh
 
 O executável acima executará todos os manifestos contidos neste diretório numa ordem específica pois existem dependência entre eles.
 
-Após executar os comandos e a instalação for finalizada com sucesso, você deve executar o comando abaixo para obter a senha definida para o ElasticSearch.
+### Acessos 
+
+Após a instalação ser concluida, execute o comando abaixo para obter a senha definida para o ElasticSearch.
 
 ```shell
 kubectl get secret elasticsearch-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 ```
 
-Com a senha em mãos agora podemos fazer um port-forward para acessar o Kibana com o comando abaixo.
+Com a senha em mãos, faremos um port-forward para acessar o Kibana.
 
 ```shell
 kubectl port-forward service/elasticsearch-kb-http 5601 -n elastic-system
 ```
 
-Ao realizar o port-forward acesse o endereço https://localhost:5601 em seu navegador. Ao acessar o Kibana você será redirecionado para a página de Login. O usuário para acesso é *elastic* e a senha que você obteve no passo anterior.
+Com o port-forward ativo, acesse o Kibana pelo endereço https://localhost:5601 em seu navegador. Ao acessar o Kibana você será redirecionado para a página de Login. O usuário para acesso é **elastic**, e a senha você obteve no passo anterior.
 
 Foi disponibilizado um service do tipo load balancer para o Kibana, não necessariamente é preciso realizar o port-forward para acessar o Kibana. Utilizando o seguinte comando podemos obter o endereço externo vinculado ao nosso serviço.
 
