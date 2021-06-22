@@ -16,7 +16,7 @@ Utilizaremos o Fluentd como agente responsavel por coletar, filtrar, formatar e 
 
 A figura abaixo ilustra a conexão entre as peças citadas acima.
 
-![Diagrama](https://storage.googleapis.com/gasparbarancelli-blog/public/EFK.png)
+![Diagrama](EFK.png)
 
 ### Instalação
 
