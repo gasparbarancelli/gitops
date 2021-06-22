@@ -1,6 +1,6 @@
 Esse guia tem como objetivo documentar a instalação do EFK que é o acrônimo de ElasticSearch, FluentD e Kibana, num cluster Kubernetes.
 
-Vamos trazer uma breve explicação sobre cada uma das peças mencionadas anteriormente, mas não entraremos em detalhes, pois nosso principal objetivo é na instalação das mesmas.
+Vamos trazer uma breve explicação sobre cada uma das peças mencionadas anteriormente funcionam, mas não entraremos em detalhes, pois nosso principal objetivo é na instalação das mesmas.
 
 **Elasticsearch:**
 
