@@ -4,5 +4,6 @@ resources:
 - elasticsearch.yaml
 - kibana.yaml
 - fluentd-config.yaml
-- fluentd.yaml
+- fluentd-role.yaml
+- fluentd-daemon.yaml
 namespace: elastic-system

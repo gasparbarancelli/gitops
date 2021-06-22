@@ -4708,4 +4708,3 @@ webhooks:
     - UPDATE
     resources:
     - kibanas
-
