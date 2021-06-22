@@ -1,17 +1,18 @@
 Esse guia tem como objetivo documentar a instalação do EFK que é o acrônimo de ElasticSearch, FluentD e Kibana, num cluster Kubernetes.
 
-Vamos trazer uma breve explicação sobre cada uma das peças mencionadas anteriormente funcionam, mas não entraremos em detalhes, pois nosso principal objetivo é na instalação das mesmas.
+Vamos trazer uma breve explicação sobre cada uma das peças mencionadas anteriormente, mas não entraremos em detalhes, pois nosso principal objetivo é na instalação das mesmas.
 
-**Elasticsearch:**
+**Elasticsearch** é um mecanismo de busca baseado na biblioteca Apache Lucene. Ele fornece um mecanismo de pesquisa de texto completo distribuído com capacidade para vários locatários com uma interface da web HTTP e documentos JSON sem esquema.
 
-**Fluentd:**
+**Fluentd** é um coletor de dados de código aberto, que permite unificar a coleta e o consumo de dados para um melhor uso e compreensão dos dados
 
-**Kibana:**
+**Kibana** é um plugin de visualização de dados de fonte aberta para o Elasticsearch. Ele fornece recursos de visualização em cima do conteúdo indexado em um cluster Elasticsearch. Os usuários podem criar gráficos de barra, linha e dispersão, ou gráficos e mapas de torta em cima de grandes volumes de dados.
+
+---
 
 Vamos fazer o uso de operadores para instalação do Elastic Search e Kibana, com isso teremos CR "Custom Resources" para subir novos tipos de artefatos no Kubernetes, bem como ler os CRD "Custom Resources Definition" que seriam suas especificações/documentações. Utilizamos o operador desenvolvido pela equipe do ElasticSearch, portanto, ele é encarregado por implantar os artefatos da melhor forma possivel, até mesmo fazer um upgrade de versão.
 
 > No momento em que escrevemos esta documentação não existe um operador para o FluentD, portanto implantaremos o FluentD num DaemonSet, pois ele precisa ser implantado em todos nós do cluster.
- 
 
 ![alt text](https://storage.googleapis.com/gasparbarancelli-blog/public/EFK.png "Title")
 
