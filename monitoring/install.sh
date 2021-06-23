@@ -9,6 +9,8 @@ kubectl wait --for=condition=available --timeout=600s deployment/prometheus-oper
 kustomize build . | kubectl apply -f -
 kubectl apply -f serviceMonitor.yaml
 kubectl apply -f prometheus-istio-operator.yaml
+kubectl apply -f service-monitor-control-plane-istio.yaml
+kubectl apply -f service-monitor-istio-envoy.yaml
 
 
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.18.1/install.sh | bash -s v0.18.1
