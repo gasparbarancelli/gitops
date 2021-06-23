@@ -1,0 +1,58 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: blog-rule
+  namespace: community
+spec:
+  host: blog
+  subsets:
+    - name: v1
+      labels:
+        version: v1
+    - name: v2
+      labels:
+        version: v2
+    - name: v3
+      labels:
+        version: v3
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: blog
+  namespace: community
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - blog-gateway
+  http:
+    - match:
+        - queryParams:
+            version:
+              exact: v3
+      route:
+        - destination:
+            host: blog
+            subset: v3
+    - match:
+        - queryParams:
+            version:
+              exact: v2
+      route:
+        - destination:
+            host: blog
+            subset: v2
+    - route:
+        - destination:
+            host: blog
+            subset: v1
+      retries:
+        attempts: 3
+        perTryTimeout: 2s
+        retryOn: 5xx,gateway-error,connect-failure,refused-stream
+      fault:
+        delay:
+          percentage:
+            value: 0.1
+          fixedDelay: 5s

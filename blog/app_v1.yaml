@@ -1,0 +1,90 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog-v1
+  namespace: community
+  labels:
+    app: blog
+    version: v1
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: blog
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: blog
+        component: blog
+        version: v1
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: blog
+          image: gasparbarancelli/blog:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 10
+            successThreshold: 1
+            failureThreshold: 2
+          resources:
+            requests:
+              memory: "300Mi"
+              cpu: "400m"
+            limits:
+              memory: "700Mi"
+              cpu: "600m"
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: blog
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: blog
+  namespace: community
+data:
+  SERVER_PORT: "8080"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  namespace: community
+  labels:
+    app: blog
+    service: blog
+    java-monitoring: prometheus
+spec:
+  ports:
+    - port: 8080
+      name: http-monitoring-prometheus
+      protocol: TCP
+      targetPort: 8080
+    - port: 80
+      name: http-80
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: blog

@@ -1,0 +1,1 @@
+Este repositorio contem alguns manifestor e documentacoes para demonstracao de uma demo simples utilizando microk8s

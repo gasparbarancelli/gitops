@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: service-production-monitor
+  namespace: dev
+spec:
+  endpoints:
+  - port: http-monitoring-prometheus
+    path: /actuator/prometheus
+  jobLabel: java-monitoring
+  selector:
+    matchLabels:
+      java-monitoring: prometheus

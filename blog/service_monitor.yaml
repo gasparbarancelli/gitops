@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: blog
+  namespace: community
+  labels:
+    app: blog
+spec:
+  selector:
+    matchLabels:
+      app: blog
+  endpoints:
+    - port: http-monitoring-prometheus
+      path: /actuator/prometheus
+      interval: 10s
