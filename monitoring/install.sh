@@ -16,6 +16,7 @@ curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releas
 kubectl create -f https://operatorhub.io/install/grafana-operator.yaml
 kubectl wait --for=condition=available --timeout=600s deployment/grafana-operator  -n my-grafana-operator
 
+kubectl apply -f grafana-secret.yaml
 kubectl apply -f grafana-volume.yaml
 kubectl apply -f grafana-datasource.yaml
 kubectl apply -f grafana-dashboard.yaml

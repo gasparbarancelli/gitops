@@ -14,7 +14,8 @@ spec:
       in_cluster_url: 'http://grafana-service.my-grafana-operator.svc:3000'
     prometheus:
       #url: 'http://prometheus.istio-system.svc:9090'
-      in_cluster_url: 'http://prometheus.istio-system.svc:9090' 
+      #in_cluster_url: 'http://prometheus.istio-system.svc:9090' 
+      in_cluster_url: 'http://monitoring.istio-system.svc:9090' 
     tracing:
       #url: 'http://jaeger-all-in-one-inmemory-query.monitoring.svc:16686'
       #enable: true
