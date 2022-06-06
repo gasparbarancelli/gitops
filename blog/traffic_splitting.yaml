@@ -42,11 +42,11 @@ spec:
               exact: v2
       route:
         - destination:
-            host: blog
+            host: app
             subset: v2
     - route:
         - destination:
-            host: blog
+            host: app
             subset: v1
       timeout: 10s      
       retries:
