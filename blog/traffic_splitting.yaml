@@ -44,12 +44,15 @@ spec:
         - destination:
             host: app
             subset: v2
-          weight: 10
     - route:
         - destination:
             host: app
             subset: v1
-          weight: 90  
+          weight: 90 
+        - destination:
+            host: app
+            subset: v2
+          weight: 10   
       timeout: 10s      
       retries:
         attempts: 3
