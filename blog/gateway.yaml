@@ -1,15 +1,29 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: blog-gateway
-  namespace: community
+  name: app-gateway
+  namespace: istio-sytem
 spec:
   selector:
-    istio: ingressgateway
+    app: ingressgateway
   servers:
-    - port:
-        number: 80
-        name: http
-        protocol: HTTP
-      hosts:
-        - "*"
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - app.fluytcloud.com
+    - app.gasparbarancelli.com
+    tls:
+      httpsRedirect: true
+  - port:
+      number: 443
+      name: https-443
+      protocol: HTTPS
+    hosts:
+    - app.fluytcloud.com
+    - app.gasparbarancelli.com
+    tls:
+      mode: SIMPLE
+      serverCertificate: /etc/certs/servercert.pem
+      privateKey: /etc/certs/privatekey.pem
